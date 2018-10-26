@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+body {background-color:salmon;}
+h2 {
+
+  color: white;
+  font-family: verdana;
+  font-size: 300%
+}
+#test {
+
+}
+p {
+  color: white;
+  font-family: verdana;
+  font-size: 120%;
+
+
+}
+
+
+
+</style>
+  <script type ="text/javascript">
+  function sayThankYou() {
+    alert("Thank you for submitting")
+  }
+  </script>
+
+
+
+  <script type = "text/javacript">
+  function randomDino() {
+
+  }
+  </script>
+</head>
+<body>
+
+
+
+
+
+
+<div align="center">
+
+  <h2>DINODB LOGIN</h2>
+<p>
+<img src="dino.jpg" alt="dino" width="500" height="300">
+</p>
+<TABLE BORDER = "5" WIDTH="50%" CELLPADDING="5" CELLSPACING="3">
+  <TR>
+        <TH COLSPAN="10"><BR><H3>TABLE TITLE</H3>
+        </TH>
+     </TR>
+     <TR>
+        <TH>UserName</TH>
+        <TH>First name</TH>
+        <TH>Last name</TH>
+        <TH>Email</TH>
+        <TH>D.O.B</TH>
+        <TH>Favourite Dino</TH>
+        <TH>Update</TH>
+     </TR>
+   <TR>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD><input type="button" value="update"></TD>
+   </TR>
+   <TR>
+
+   </TR>
+   <TR>
+     <TD></TD>
+     <TD></TD>
+     <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD><input type="button" value="update"></TD>
+   </TR>
+   <TD></TD>
+   <TD></TD>
+   <TD></TD>
+   <TD></TD>
+   <TD></TD>
+   <TD></TD>
+   <TD><input type="button" value="update"></TD>
+</TR>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD><input type="button" value="update"></TD>
+</TR>
+</TABLE>
+
+
+
+
+
+
+
+
+
+
+<form id = "myForm">
+<p>
+Username:</p>
+
+<input type="form" name="ID" value="">
+<p>
+ First name:</p>
+ <input type="form" name="firstname" value="">
+ <p>
+ Last name:</p>
+ <input type="form" name="lastname" value="">
+ <p>
+
+ Email:</p>
+ <input type="form" name="EMAIL" value="">
+
+ <p>
+ D.O.B:</p>
+ <input type="form" name="DOB" value="">
+<P>
+Favourite Dino:</p>
+ <input type="form" name="fav-dino" value="e.g T-Rex">
+<p>Gender</p>
+ <input type="radio" name="gender" value="male" checked> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other
+
+</form>
+<script>
+window.addEventListener("load", function () {
+  function sendData() {
+    var XHR = new XMLHttpRequest();
+
+    // Bind the FormData object and the form element
+    var FD = new FormData(form);
+
+    // Define what happens on successful data submission
+    XHR.addEventListener("load", function(event) {
+      alert(event.target.responseText);
+    });
+
+    // Define what happens in case of error
+    XHR.addEventListener("error", function(event) {
+      alert('Oops! Something went wrong.');
+    });
+
+    // Set up our request
+    XHR.open("POST", "https:");
+
+    // The data sent is what the user provided in the form
+    XHR.send(FD);
+  }
+
+  // Access the form element...
+  var form = document.getElementById("myForm");
+
+  // ...and take over its submit event.
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    sendData();
+  });
+});
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <br><br>
+ <script>
+ function GetValue()
+ {
+     var myarray= new Array("Rex","Ravager","Carnotaurus","Dodo","Pegomastax","Ichythyornis","Sabertooth");
+     var random = myarray[Math.floor(Math.random() * myarray.length)];
+     //alert(random);
+     document.getElementById("message").innerHTML=random;
+ }
+ function httpGet(url)
+{
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", url, false ); // false for synchronous request
+  xmlHttp.send( null);
+//  return xmlHttp.responseText;
+document.getElementById("output").innerHTML = xmlHttp.response;
+}
+
+function getUrl() {
+httpGet('http://localhost:8080/Movie/api/movie/getAllMovies')
+}
+
+function sayThanks() {
+  document.getElementById("test").innerHTML="Thank you for submitting!";
+}
+
+</script>
+
+
+
+<input type="submit" id="XMLHttpRequest" value="Submit" onclick="GetValue(), sayThankYou(), getUrl(), sendData()" />
+<p id="message" ></p>
+  <p id = "test"> Click Submit to get a Dino pet. </p>
+  <p id = "output"> </p>
+
+</div>
+
+
+
+</body>
+<footer>
+  <p>Created by: Tahsin</p>
+  <p>Contact information: <a href="mailto:">
+  confidential@importantstuff.com</a></p>
+</footer>
+</html>
