@@ -36,6 +36,90 @@ p {
 
   }
   </script>
+  <script>
+  window.addEventListener("load", function () {
+    function sendData() {
+      var XHR = new XMLHttpRequest();
+
+      // Bind the FormData object and the form element
+      var FD = new FormData(form);
+
+      // Define what happens on successful data submission
+      XHR.addEventListener("load", function(event) {
+        alert(event.target.responseText);
+      });
+
+      // Define what happens in case of error
+      XHR.addEventListener("error", function(event) {
+        alert('Oops! Something went wrong.');
+      });
+
+      // Set up our request
+      XHR.open("POST", "https:");
+
+      // The data sent is what the user provided in the form
+      XHR.send(FD);
+    }
+
+    // Access the form element...
+    var form = document.getElementById("myForm");
+
+    // ...and take over its submit event.
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      sendData();
+    });
+  });
+
+
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <br><br>
+   <script>
+   function GetValue()
+   {
+       var myarray= new Array("Rex","Ravager","Carnotaurus","Dodo","Pegomastax","Ichythyornis","Sabertooth");
+       var random = myarray[Math.floor(Math.random() * myarray.length)];
+       //alert(random);
+       document.getElementById("message").innerHTML=random;
+   }
+   function httpGet(url)
+  {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", url, false ); // false for synchronous request
+    xmlHttp.send( null);
+  //  return xmlHttp.responseText;
+  document.getElementById("output").innerHTML = xmlHttp.response;
+  }
+
+  function getUrl() {
+  httpGet('http://localhost:8080/Movie/api/movie/getAllMovies')
+  }
+
+  function sayThanks() {
+    document.getElementById("test").innerHTML="Thank you for submitting!";
+  }
+
+  </script>
+
 </head>
 <body>
 
@@ -104,19 +188,34 @@ p {
 </TABLE>
 
 
+first name: <input type="text" id="firstname">
+last name: <input type="text" id="lastname">
+gender: <input type="text" id="gender">
+username: <input type="text" id="username">
+<button onclick="function1()">Send</button>
 
+Details:
 
+<table>
+<tr><td><p id="displayhere"></p></td></tr>
+</table>
+<script>
+function function1(){
 
+        var firstname=document.getElementById("firstname").value;
+        var lastname=document.getElementById("lastname").value;
+        var gender=document.getElementById("gender").value;
+        var username=document.getElementById("username").value;
+        var result="First Name: "+firstname+"<br>Last Name:"+lastname+"<br>Gender : "+gender+"<br>User Name:"+username
+        document.getElementById("displayhere").innerHTML=result;
+    }
 
+    </script>
 
-
-
-
-<form id = "myForm">
 <p>
 Username:</p>
 
-<input type="form" name="ID" value="">
+<input type="text" name="ID" value="">
 <p>
  First name:</p>
  <input type="form" name="firstname" value="">
@@ -138,94 +237,7 @@ Favourite Dino:</p>
  <input type="radio" name="gender" value="male" checked> Male<br>
   <input type="radio" name="gender" value="female"> Female<br>
   <input type="radio" name="gender" value="other"> Other
-
 </form>
-<script>
-window.addEventListener("load", function () {
-  function sendData() {
-    var XHR = new XMLHttpRequest();
-
-    // Bind the FormData object and the form element
-    var FD = new FormData(form);
-
-    // Define what happens on successful data submission
-    XHR.addEventListener("load", function(event) {
-      alert(event.target.responseText);
-    });
-
-    // Define what happens in case of error
-    XHR.addEventListener("error", function(event) {
-      alert('Oops! Something went wrong.');
-    });
-
-    // Set up our request
-    XHR.open("POST", "https:");
-
-    // The data sent is what the user provided in the form
-    XHR.send(FD);
-  }
-
-  // Access the form element...
-  var form = document.getElementById("myForm");
-
-  // ...and take over its submit event.
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    sendData();
-  });
-});
-
-
-
-
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <br><br>
- <script>
- function GetValue()
- {
-     var myarray= new Array("Rex","Ravager","Carnotaurus","Dodo","Pegomastax","Ichythyornis","Sabertooth");
-     var random = myarray[Math.floor(Math.random() * myarray.length)];
-     //alert(random);
-     document.getElementById("message").innerHTML=random;
- }
- function httpGet(url)
-{
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", url, false ); // false for synchronous request
-  xmlHttp.send( null);
-//  return xmlHttp.responseText;
-document.getElementById("output").innerHTML = xmlHttp.response;
-}
-
-function getUrl() {
-httpGet('http://localhost:8080/Movie/api/movie/getAllMovies')
-}
-
-function sayThanks() {
-  document.getElementById("test").innerHTML="Thank you for submitting!";
-}
-
-</script>
-
-
-<h1> hi </h1>
 
 
 <input type="submit" id="XMLHttpRequest" value="Submit" onclick="GetValue(), sayThankYou(), getUrl(), sendData()" />
@@ -234,8 +246,6 @@ function sayThanks() {
   <p id = "output"> </p>
 
 </div>
-
-
 
 </body>
 <footer>
